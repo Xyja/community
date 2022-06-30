@@ -1,0 +1,4 @@
+server:
+  port: 9999  # 服务器端口
+  servlet:
+    context-path: /community  #项目上下文路径
