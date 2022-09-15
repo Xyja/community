@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcoder.community.dao.DiscussPostMapper">
+
+    <!--目前的看法是写一个mapper 先把查询和插入这个实体类的 sql片段写出来-->
+
+    <!--user数据库表的sql片段-->
+    <sql id="selectFields">
+        id,user_id,title,content,type,status,create_time,comment_count,score
+    </sql>
+
+    <!--DIscussPost表的sql片段  DiscussPost 和 user 里面的字段 一致-->
+    <sql id="insertFields">
+        user_id,title,content,type,status,create_time,comment_count,score
+    </sql>
+
+
+    <!-- selectDiscussPosts(int userId, int offset, int limit)-->
+    <!--返回值类型 不需要管是不是集合 因为Java能识别是一个还是集合  只需要返回值类型-->
+    <!--这里报红也没事 能用  我因为添加了yaml的type-aliases-package 所以不用写全路径-->
+    <!--order by type desc, create_time desc  查询出来的类容按精华帖在前，发帖时间最新排序 热度暂时不考虑-->
+    <select id="selectDiscussPosts" resultType="com.newcoder.community.entity.DiscussPost">
+      select <include refid="selectFields"></include>
+      from discuss_post
+      where status != 2
+      <if test="userId!=0">
+          and user_id = #{userId}
+      </if>
+      order by type desc, create_time desc
+      limit #{offset}, #{limit}
+    </select>
+
+    <!--selectDiscussPostRows(@Param("userId") int userId)-->
+    <select id="selectDiscussPostRows" resultType="int">
+        select count(id)
+        from discuss_post
+        where status != 2
+        <if test="userId!=0">
+            and user_id = #{userId}
+        </if>
+    </select>
+
+    <!--int insertDiscussPost(DiscussPost discussPost)-->
+    <insert id="insertDiscussPost" parameterType="com.newcoder.community.entity.DiscussPost" keyProperty="id">
+        insert into discuss_post (<include refid="insertFields"></include>)
+        values (#{userId}, #{title}, #{content}, #{type}, #{status}, #{createTime}, #{commentCount}, #{score})
+    </insert>
+
+    <!--DiscussPost selectDiscussPostById(int id);-->
+    <select id="selectDiscussPostById" resultType="DiscussPost">
+        select <include refid="selectFields"></include>
+        from discuss_post
+        where id = #{id}
+    </select>
+
+    <!--int updateCommentCount(int id, int commentCount);-->
+    <update id="updateCommentCount">
+        update discuss_post set comment_count = #{commentCount}
+        where id = #{id}
+    </update>
+</mapper>

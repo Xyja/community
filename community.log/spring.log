@@ -1,0 +1,9 @@
+2022-07-10 20:49:59.022  INFO 1416 --- [main] com.newcoder.community.LoggerTest        : Starting LoggerTest using Java 1.8.0_311 on DESKTOP-9B2DSLI with PID 1416 (started by admin in D:\Code\workspace\community)
+2022-07-10 20:49:59.024 DEBUG 1416 --- [main] com.newcoder.community.LoggerTest        : Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-10 20:49:59.026  INFO 1416 --- [main] com.newcoder.community.LoggerTest        : No active profile set, falling back to 1 default profile: "default"
+2022-07-10 20:50:04.031  INFO 1416 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-10 20:50:04.884  INFO 1416 --- [main] com.newcoder.community.LoggerTest        : Started LoggerTest in 7.315 seconds (JVM running for 9.902)
+2022-07-10 20:50:05.391 DEBUG 1416 --- [main] com.newcoder.community.LoggerTest        : debug
+2022-07-10 20:50:05.391  INFO 1416 --- [main] com.newcoder.community.LoggerTest        : info
+2022-07-10 20:50:05.392  WARN 1416 --- [main] com.newcoder.community.LoggerTest        : warn
+2022-07-10 20:50:05.392 ERROR 1416 --- [main] com.newcoder.community.LoggerTest        : error

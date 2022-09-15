@@ -1,4 +1,71 @@
+# ServerProperties
 server:
   port: 9999  # 服务器端口
   servlet:
     context-path: /community  #项目上下文路径
+
+# ThymeleafProperties
+spring:
+  thymeleaf:
+    cache: false
+
+  # DataSourceProperties
+  # spring:  这里不用写spring标签了
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/community?characterEncoding=utf-8&useSSL=false&serverTimezone=Hongkong
+    password: 123456
+    username: root
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 5
+      idle-timeout: 30000
+
+  # MailProperties
+#  mail:
+#    host: smtp.sina.com #域名
+#    port: 465 #端口
+#    username: xaioyongjiu@sina.com
+#    password: abc123456..
+#    protocol: smtps
+
+    # 还有一个安全连接的配置在properties里面 spring.mail.properties.mail.smtp.ssl.enable=true
+
+
+#  spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+#  spring.datasource.hikari.maximum-pool-size=15
+#  spring.datasource.hikari.minimum-idle=5
+#  spring.datasource.hikari.idle-timeout=30000
+
+# MybatisProperties
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.newcoder.community.entity
+  configuration:
+    use-generated-keys: true
+    map-underscore-to-camel-case: true
+#  mapper-locations=classpath:mapper/*.xml # 编译了之后配置文件在target/classes/...
+#  mybatis.type-aliases-package=com.nowcoder.community.entity #存放实体类的包
+#  mybatis.configuration.useGeneratedKeys=true  #启用自动增长主键
+#  mybatis.configuration.mapUnderscoreToCamelCase=true #数据库的下划线自动转换成驼峰命名
+
+# MailProperties
+
+
+
+
+
+#logger  在properties文件里面配置好了 这里不用管
+#logging.level.com.nowcoder.community=debug  #让控制台打印结果更详细 方便debug
+#logging.file=d:/work/data/nowcoder/community.log
+#logback:
+#  logging:
+#    level: debug
+#
+#    file:
+#      path: d:/Code/workspace/community/com.newcode.community
+#  logging:
+#    level: debug
+#    file:
+#      path: d:/Code/workspace/community
