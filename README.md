@@ -2,7 +2,7 @@
 ## 技术栈
 
 - **Spring Boot**
-- **Spring、Spring MVC、MyBatis ** **MySQL**
+- **Spring、Spring MVC、MyBatis、MySQL**
 - **Redis、Kafka、Elasticsearch**
 ## 主要功能实现
 - 社区登录、退出、注册
